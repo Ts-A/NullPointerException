@@ -1,12 +1,16 @@
 http:
-  port: 8080
+  port: 8282
 admin:
   port: 9876
   host: localhost
 apiEndpoints:
-  # see: http://www.express-gateway.io/docs/configuration/gateway.config.yml/apiEndpoints
+  hostel-space-foundation-console:
+    host: '*'
+    paths:
+      - '/console*'
 serviceEndpoints:
-  # see: http://www.express-gateway.io/docs/configuration/gateway.config.yml/serviceEndpoints
+  hostel-space-foundation-server:
+    url: '${HOSTEL_FOUNDATION_SERVER}'
 policies:
   - basic-auth
   - cors
@@ -17,4 +21,13 @@ policies:
   - proxy
   - rate-limit
 pipelines:
-  # see: https://www.express-gateway.io/docs/configuration/gateway.config.yml/pipelines
+  default:
+    apiEndpoints:
+      - hostel-space-foundation-console
+    policies:
+      - proxy:
+          action:
+            serviceEndpoint: hostel-space-foundation-server
+            prependPath: true
+            ignorePath: false
+            stripPath: true
