@@ -1,0 +1,33 @@
+http:
+  port: 8282
+admin:
+  port: 9876
+  host: localhost
+apiEndpoints:
+  hostel-space-foundation-console:
+    host: '*'
+    paths:
+      - '/console*'
+serviceEndpoints:
+  hostel-space-foundation-server:
+    url: '${HOSTEL_FOUNDATION_SERVER}'
+policies:
+  - basic-auth
+  - cors
+  - expression
+  - key-auth
+  - log
+  - oauth2
+  - proxy
+  - rate-limit
+pipelines:
+  default:
+    apiEndpoints:
+      - hostel-space-foundation-console
+    policies:
+      - proxy:
+          action:
+            serviceEndpoint: hostel-space-foundation-server
+            prependPath: true
+            ignorePath: false
+            stripPath: true
