@@ -1,0 +1,38 @@
+{
+  "name": "foundation-server",
+  "version": "1.0.0",
+  "description": "The foundation server of hostel space",
+  "main": "src/index.js",
+  "keywords": [],
+  "author": "T S Ajeet",
+  "license": "ISC",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "fmt": "prettier --write src/"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15",
+    "prettier": "2.5.1"
+  },
+  "dependencies": {
+    "api-query-params": "^5.3.1",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^14.2.0",
+    "express": "^4.17.2",
+    "express-async-handler": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "module-alias": "^2.2.2",
+    "mongoose": "^6.1.7",
+    "morgan": "^1.10.0"
+  },
+  "_moduleAliases": {
+    "@root": ".",
+    "@src": "./src",
+    "@api": "./src/api",
+    "@helper": "./src/helper",
+    "@models": "./src/models",
+    "@methods": "./src/models/methods",
+    "@config": "./src/config"
+  }
+}
